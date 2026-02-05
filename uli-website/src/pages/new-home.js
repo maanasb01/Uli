@@ -1,13 +1,15 @@
 import * as React from "react"
-import AppShell from "../components/molecules/AppShell"
+import AppShellNew from "../components/molecules/AppShellNew"
 import AnnouncementBanner from "../components/molecules/AnnouncementBanner"
 import { Box, Text } from "grommet"
+import Projects from "../components/molecules/Projects"
+import RecentBlogs from "../components/molecules/RecentBlogs"
 
 
 const NewHome = () => {
   return (
-    <AppShell>
-      <main style={{ padding: "2rem" }}>
+    <AppShellNew>
+      <Box align="center" margin={{horizontal: "large", vertical:"small"}}>
 
         <AnnouncementBanner>
           <Box>
@@ -18,10 +20,10 @@ const NewHome = () => {
           </Box>
 
         </AnnouncementBanner>
-        <h1>New Home</h1>
-        <p>This is a temporary placeholder for the new homepage design.</p>
-      </main>
-    </AppShell >
+      </Box>
+        <Projects />
+        <RecentBlogs />
+    </AppShellNew >
   )
 }
 
