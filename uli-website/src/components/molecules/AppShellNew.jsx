@@ -5,8 +5,8 @@ import { Colors, NavLink, Theme } from "../atoms/UliCore";
 import NavBarNew from "./NavBarNew";
 import i18n from "../atoms/i18n";
 import { useTranslation } from "react-i18next";
-import Footer from "./Footer";
 import { useLocation } from "@reach/router";
+import FooterNew from "./FooterNew";
 
 export default function AppShellNew({ children }) {
   const { t, i18n } = useTranslation();
@@ -60,7 +60,7 @@ export default function AppShellNew({ children }) {
 
         <NavBarNew />
         <Box flex="grow">{children}</Box>
-        <Footer />
+        <FooterNew />
       </main>
     </Grommet>
   );

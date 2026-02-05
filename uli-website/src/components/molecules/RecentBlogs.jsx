@@ -95,7 +95,7 @@ export default function RecentBlogs() {
             return (
               <Box
                 key={idx}
-                className="mx-auto border-t-0 border-r-0 border-l-0 border-b-2 border-dashed border-black/30 flex flex-row gap-8 w-[50%]  pb-3"
+                className="mx-auto border-t-0 border-r-0 border-l-0 border-b-2 border-dashed border-black/30 flex flex-row gap-8 w-[70%] 2xl:w-[50%]  pb-3"
               >
                 <Text className="min-w-[7em]">
                   {formatDate(blog.frontmatter.date)}
