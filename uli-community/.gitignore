@@ -41,6 +41,8 @@ npm-debug.log
 .venv/
 **__pycache__/
 # **uv.lock
+lib/python/scraper_output/
 
 .env*
 !.env.local.example
+env.dev

@@ -20,6 +20,8 @@ if System.get_env("PHX_SERVER") do
   config :uli_community, UliCommunityWeb.Endpoint, server: true
 end
 
+config :uli_community, :apify_token, System.get_env("APIFY_TOKEN")
+
 if config_env() == :prod do
   maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
 
