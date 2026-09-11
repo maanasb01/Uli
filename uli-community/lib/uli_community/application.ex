@@ -4,6 +4,7 @@ defmodule UliCommunity.Application do
   @moduledoc false
 
   use Application
+  require Logger
 
   @impl true
   def start(_type, _args) do
@@ -15,12 +16,12 @@ defmodule UliCommunity.Application do
         {Oban, Application.fetch_env!(:uli_community, Oban)},
         {Phoenix.PubSub, name: UliCommunity.PubSub},
         # Start the Finch HTTP client for sending emails
-        {Finch, name: UliCommunity.Finch},
-        UliCommunity.Scraper.Scraping
+        {Finch, name: UliCommunity.Finch}
         # Start a worker by calling: UliCommunity.Worker.start_link(arg)
         # {UliCommunity.Worker, arg},
       ] ++
         enable_text_vyakyarth_model() ++
+        enable_scraping() ++
         [
           # Start to serve requests, typically the last entry
           UliCommunityWeb.Endpoint
@@ -45,6 +46,17 @@ defmodule UliCommunity.Application do
     if Application.get_env(:uli_community, :enable_text_vec_rep_vyakyarth, false) do
       [UliCommunity.MediaProcessing.TextVecRepVyakyarth]
     else
+      []
+    end
+  end
+
+  # Only starts the scraper if APIFY_TOKEN is configured, so the app can boot without it.
+  def enable_scraping do
+    if Application.get_env(:uli_community, :apify_token) do
+      Logger.info("APIFY_TOKEN found, enabling Scraper GenServer")
+      [UliCommunity.Scraper.Scraping]
+    else
+      Logger.warning("APIFY_TOKEN not set, Scraper GenServer disabled")
       []
     end
   end
