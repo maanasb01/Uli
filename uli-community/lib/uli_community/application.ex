@@ -15,7 +15,8 @@ defmodule UliCommunity.Application do
         {Oban, Application.fetch_env!(:uli_community, Oban)},
         {Phoenix.PubSub, name: UliCommunity.PubSub},
         # Start the Finch HTTP client for sending emails
-        {Finch, name: UliCommunity.Finch}
+        {Finch, name: UliCommunity.Finch},
+        UliCommunity.Scraper.Scraping
         # Start a worker by calling: UliCommunity.Worker.start_link(arg)
         # {UliCommunity.Worker, arg},
       ] ++
